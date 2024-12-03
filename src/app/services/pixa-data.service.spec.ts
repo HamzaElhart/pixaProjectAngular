@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AuteServiceService } from './aute-service.service';
+import { PixaDataService } from './pixa-data.service';
 
-describe('AuteServiceService', () => {
-  let service: AuteServiceService;
+describe('PixaDataService', () => {
+  let service: PixaDataService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(AuteServiceService);
+    service = TestBed.inject(PixaDataService);
   });
 
   it('should be created', () => {

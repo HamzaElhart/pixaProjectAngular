@@ -1,0 +1,34 @@
+<div
+  class="min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-900 via-indigo-950 to-gray-950 text-white"
+>
+  <div
+    class="bg-gray-800 rounded-lg shadow-lg p-8 max-w-md w-full flex flex-col items-center justify-center space-y-8"
+  >
+    <!-- Title -->
+    <h1
+      class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500"
+    >
+      Login to Your Account
+    </h1>
+
+    <!-- Google Sign-In Code -->
+    <div
+      id="g_id_onload"
+      data-client_id="552772184847-hs50u0sj26d5n2qjq6867cmumkp69m65.apps.googleusercontent.com"
+      data-context="signin"
+      data-ux_mode="popup"
+      data-login_uri="http://localhost:3000/api/login"
+      data-auto_prompt="false"
+    ></div>
+
+    <div
+      class="g_id_signin"
+      data-type="standard"
+      data-shape="pill"
+      data-theme="filled_blue"
+      data-text="signin_with"
+      data-size="large"
+      data-logo_alignment="left"
+    ></div>
+  </div>
+</div>

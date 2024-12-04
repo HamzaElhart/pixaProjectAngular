@@ -8,30 +8,51 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './body.component.html',
-  styleUrls: ['./body.component.css'], 
+  styleUrls: ['./body.component.css'],
 })
 export class BodyComponent implements OnInit {
-  picturesDetails: any[] = []; 
-  filteredPictures: any[] = []; 
-  searchTerm: string = ''; 
+  mediaDetails: any[] = []; 
+  filteredMedia: any[] = []; 
+  userInput: string = ''; 
 
   constructor(private pixaData: PixaDataService) {}
 
   ngOnInit(): void {
-    this.pixaData.getData().subscribe((data: any) => {
-      this.picturesDetails = data.hits; 
-      this.filteredPictures = this.picturesDetails; 
+    this.fetchInitialData(); 
+  }
+
+  fetchInitialData(): void {
+    this.pixaData.fetchData().subscribe((data: any) => {
+      this.mediaDetails = data.hits; 
+      this.filteredMedia = this.mediaDetails; 
+      this.pixaData.updateCache(this.mediaDetails); 
     });
   }
 
-  
-  filterPictures(): void {
-    const term = this.searchTerm.toLowerCase();
-    this.filteredPictures = this.picturesDetails.filter(
-      (picture) =>
-        picture.user.toLowerCase().includes(term) || 
-        picture.tags.toLowerCase().includes(term) 
-    );
-  }
+  searchMedia(): void {
+    const term = this.userInput.toLowerCase();
 
+    
+    const cachedData = this.pixaData.getCachedData();
+    const filtered = cachedData.filter((media) => {
+      return (
+        media.user.toLowerCase().includes(term) || 
+        media.tags.toLowerCase().includes(term) 
+      );
+    });
+
+    if (filtered.length > 0) {
+      this.filteredMedia = filtered; 
+    } else {
+      
+      this.pixaData.fetchData(term).subscribe((data: any) => {
+        this.mediaDetails = data.hits; 
+        this.filteredMedia = this.mediaDetails; 
+        this.pixaData.updateCache([
+          ...cachedData,
+          ...this.mediaDetails, 
+        ]);
+      });
+    }
+  }
 }

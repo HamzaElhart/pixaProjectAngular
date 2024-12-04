@@ -1,23 +1,39 @@
 <nav
-  class="bg-gradient-to-r from-blue-500 to-white text-white py-4 px-6 flex justify-between items-center shadow-lg fixed top-0 left-0 right-0 z-50"
+  class="bg-gradient-to-r from-purple-500 via-indigo-500 to-blue-500 text-white py-4 px-8 flex justify-between items-center shadow-lg fixed top-0 left-0 right-0 z-50"
 >
-  <div class="flex space-x-6 items-center">
-    <a class="text-lg font-semibold hover:text-gray-200 transition duration-300"
-      >Home</a
-    >
-
-    <a class="text-lg font-semibold hover:text-gray-200 transition duration-300"
-      >Add</a
-    >
-
-    <a
-      href="#"
-      class="text-lg font-semibold hover:text-gray-200 transition duration-300"
-      >Logout</a
-    >
+  <!-- Logo -->
+  <div class="flex items-center space-x-3">
+    <div class="bg-white p-2 rounded-full shadow-md">
+      <img
+        src="https://pixabay.com/favicon-32x32.png"
+        alt="Logo"
+        class="w-8 h-8"
+      />
+    </div>
+    <h1 class="text-xl font-bold tracking-wide">Pixabay</h1>
   </div>
 
+  <!-- Navigation Links -->
+  <!-- <div class="hidden md:flex space-x-6">
+    <a
+      href="#home"
+      class="text-lg font-medium hover:text-gray-200 transition duration-300"
+      >Home</a
+    >
+  </div> -->
+
+  <!-- Action Buttons -->
   <div class="flex items-center space-x-4">
+    <!-- Search -->
+    <div class="relative hidden md:block">
+      <a
+        href="#logout"
+        class="text-lg font-medium hover:text-gray-200 transition duration-300"
+        >Logout</a
+      >
+    </div>
+
+    <!-- Dark Mode Toggle -->
     <button
       id="darkModeToggle"
       class="bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700 transition duration-300"
@@ -26,8 +42,51 @@
       🌙
     </button>
   </div>
+
+  <!-- Mobile Menu -->
+  <button
+    class="md:hidden bg-gray-800 p-2 rounded-md text-white"
+    onclick="toggleMenu()"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="w-6 h-6"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M4 6h16M4 12h16m-7 6h7"
+      />
+    </svg>
+  </button>
+
+  <!-- Dropdown Menu for Mobile -->
+  <div
+    id="mobileMenu"
+    class="absolute bg-white shadow-lg rounded-lg w-56 top-16 right-4 p-4 hidden md:hidden space-y-4"
+  >
+    <a
+      href="#home"
+      class="block text-gray-800 hover:text-indigo-500 transition duration-300"
+      >Home</a
+    >
+    <a
+      href="#add"
+      class="block text-gray-800 hover:text-indigo-500 transition duration-300"
+      >Add</a
+    >
+    <a
+      href="#logout"
+      class="block text-gray-800 hover:text-indigo-500 transition duration-300"
+      >Logout</a
+    >
+  </div>
 </nav>
 
-<div class="mt-16">
+<div class="mt-20">
   <!-- <router-outlet></router-outlet> -->
 </div>
